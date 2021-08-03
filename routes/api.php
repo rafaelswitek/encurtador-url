@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UrlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$router->group(['prefix' => 'url'], function () use ($router) {
+    $router->post('/', [UrlController::class, 'store']);
+    $router->get('/', [UrlController::class, 'index']);
+    $router->get('/{id}', [UrlController::class, 'show']);
+    $router->put('/{id}', [UrlController::class, 'update']);
+    $router->delete('/{id}', [UrlController::class, 'destroy']);
 });
