@@ -26,6 +26,6 @@ class UrlController extends BaseController
             return response()->json($response['errors'], 422);
         }
 
-        return response()->json($response['data'], 200);
+        return redirect()->away($response['data'][0]['url_original']);
     }
 }

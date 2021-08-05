@@ -18,7 +18,7 @@ abstract class BaseController extends Controller
             return response()->json($response['errors'], 422);
         }
 
-        return response()->json($response, 200);
+        return response()->json($response['data'], 200);
     }
 
     public function store(Request $request): JsonResponse

@@ -13,7 +13,7 @@ abstract class BaseService
 
     public function list(): array
     {
-        $model = $this->getModel()::all();
+        $model = $this->getModel()->paginate(5);
         if ($model->count() == 0) {
             return [
                 "status" => false,
