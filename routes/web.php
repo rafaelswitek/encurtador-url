@@ -17,8 +17,6 @@ use App\Http\Controllers\UrlController;
 
 Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
 Route::get('/{path}', [UrlController::class, 'redirect']);
 
 require __DIR__.'/auth.php';

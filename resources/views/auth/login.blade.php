@@ -11,6 +11,13 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        @if (Route::has('login'))
+        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">registrar-se</a>
+            @endauth
+        </div>
+        @endif
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -26,10 +33,7 @@
             <div class="mt-4">
                 <x-label for="password" :value="__('Senha')" />
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <!-- Remember Me -->
@@ -42,9 +46,9 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Esqueceu sua senha?') }}
-                    </a>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    {{ __('Esqueceu sua senha?') }}
+                </a>
                 @endif
 
                 <x-button class="ml-3">
